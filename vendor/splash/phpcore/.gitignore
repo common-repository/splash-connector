@@ -1,0 +1,32 @@
+# Cache and logs
+/cache/*
+/logs/*
+/splash.log
+
+# Managed by Composer
+/var/
+/bin/
+/vendor/
+/components/
+
+# PHPUnit
+/phpunit.xml
+
+# Build data
+/build/
+
+# Others
+/dispatch.php
+.directory
+save-commands.json
+/.php_cs.cache
+/nbproject/private/
+nbproject/
+.idea
+/.gh-pages/
+/.php-cs-fixer.cache
+/.phpunit.result.cache
+/report.xml
+/phpunit-report.xml
+/public/
+/reboot.sh

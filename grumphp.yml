@@ -1,0 +1,58 @@
+
+################################################################################
+#
+# * This file is part of SplashSync Project.
+# *
+# * Copyright (C) Splash Sync <www.splashsync.com>
+# *
+# * This program is distributed in the hope that it will be useful,
+# * but WITHOUT ANY WARRANTY; without even the implied warranty of
+# * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# *
+# * For the full copyright and license information, please view the LICENSE
+# * file that was distributed with this source code.
+# *
+# * @author Bernard Paquier <contact@splashsync.com>
+#
+################################################################################
+
+#############################################
+# Override Config. for WordPress Module
+parameters:
+
+    mode:               "splashsync"
+    exclude:
+        - 'vendor'
+        - 'docs'
+        - 'docker'
+        - 'class-wordpress-plugin-template-admin-api.php'
+        - 'class-splash-wordpress-settings.php'
+        - 'class-splash-wordpress-plugin.php'
+
+    # Php Stan
+    stan-config:        "./grumphp/phpstan.neon"
+
+    # For Building Splash Documentation
+    doc-src:            '/src/Resources/docs'
+    doc-target:         '/public'
+    doc-contents:       ["splash-faq", "php-docker"]
+
+    # For Building Splash Module
+    mod-enable:         true
+    mod-src:            '/'
+    mod-file:           "splash-connector"
+
+    # For Building Splash Manifest
+    yml-enable:         false
+
+grumphp:
+    tasks:
+        phpcpd:
+            triggered_by:   []
+
+#############################################
+# Import Generic + Splash Console Configs
+imports:
+    - { resource: "./vendor/badpixxel/php-sdk/grumphp/generic.yml" }
+    - { resource: "./vendor/badpixxel/php-sdk/grumphp/extras.yml" }
+    - { resource: "./vendor/splash/console/src/Resources/grumphp/*.yml" }

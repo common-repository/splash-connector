@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- http://www.phpunit.de/manual/current/en/appendixes.configuration.html -->
+<phpunit
+    backupGlobals               = "false"
+    backupStaticAttributes      = "false"
+    colors                      = "true"
+    convertErrorsToExceptions   = "true"
+    convertNoticesToExceptions  = "false"
+    convertWarningsToExceptions = "true"
+    processIsolation            = "false"
+    stopOnFailure               = "true"
+    bootstrap                   = "vendor/autoload.php" 
+    verbose                     = "true"
+    timeoutForLargeTests        = "120"  
+>
+
+    <testsuites>
+        <testsuite name="Core">
+            <directory>vendor/splash/phpcore/Tests</directory>
+        </testsuite>
+        <testsuite name="Local">
+            <directory>src/Tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory>src/Tests</directory>
+            <directory>vendor/splash/phpcore</directory>
+            <exclude>
+                <directory>vendor</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+    
+<!--    <logging>
+        <log type="coverage-html" target="coverage" lowUpperBound="35" highLowerBound="70"/>
+    </logging> -->
+    
+    <php>
+        <ini    name="memory_limit"     value="-1" />
+        <const  name="SPLASH_DEBUG"     value="true" />
+        <server name="SERVER_NAME"      value="http://localhost/Wordpress/Wp-4.9/wp-content/plugins/splash-connector"/>
+        <server name="REQUEST_METHOD"   value=""/>
+        <server name="SPLASH_TRAVIS"    value="true" />
+        <server name="HTTP_HOST"        value="localhost"/>  
+        
+        <!-- Only Test Specified Types -->
+        <!-- <const  name="SPLASH_TYPES"     value="Product" />  -->
+        <!-- Only Test Specified Sequence -->
+        <!-- <const  name="SPLASH_SEQUENCE"  value="Monolangual" /> -->
+    </php>
+</phpunit>

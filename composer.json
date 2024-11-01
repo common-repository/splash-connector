@@ -1,0 +1,42 @@
+{
+    "name": "splash/wordpress",
+    "description": "Splash plugin for Wordpress",
+
+    "license": "MIT",
+
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    
+    "config": {
+        "vendor-dir":                   "vendor",
+        "preferred-install":            "dist",
+        "platform": {
+            "php":                          "7.4.0"
+        },
+        "allow-plugins": {
+            "phpro/grumphp": true
+        }
+    },
+    
+    "autoload": {
+        "psr-4": { "Splash\\Local\\": "src" },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
+    },
+    
+    "require": {
+        "php":                              "^7.4|^8.0",
+        "splash/phpcore":                   "dev-master"
+    },
+    
+    "require-dev": {
+        "badpixxel/php-sdk":                "~2.0",
+        "splash/console":                   "dev-master",
+        "phpunit/phpunit":                  "^9.0"
+    },
+    
+    "autoload-dev": {
+        "psr-4": { "Splash\\Tests\\": "src/Tests/" }
+    }
+}
